@@ -1,97 +1,67 @@
-<!doctype HTML>
-<!-- 201 3Dモデル作成者:井嶋君 -->
+<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>AR.js Location-Based 3D Models</title>
+  <head>
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
     <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
-    <script>
-      // JSONファイルのURL
-      const jsonURL = 'models.json';
-
-      // ページロード時にJSONデータを取得し、モデルを追加する
-      window.onload = () => {
-        fetch(jsonURL)
-          .then(response => response.json())
-          .then(models => {
-            models.forEach(model => {
-              // <a-entity> 要素を作成
-              const entity = document.createElement('a-entity');
-              entity.setAttribute('id', model.id);
-              entity.setAttribute(
-                'gps-entity-place',
-                `latitude: ${model.latitude}; longitude: ${model.longitude}`
-              );
-              entity.setAttribute('gltf-model', model.model_url);
-              entity.setAttribute('scale', model.scale);
-              entity.setAttribute('look-at', '[camera]');
-              entity.setAttribute('polygon-offset', 'factor: 1; units: 1');
-              entity.setAttribute('rotation', '0 0 0');
-
-              // <a-scene> に追加
-              document.querySelector('a-scene').appendChild(entity);
-            });
-          })
-          .catch(error => console.error('JSON読み込みエラー:', error));
-      };
-
-      // rotation-sync コンポーネント
-      AFRAME.registerComponent('rotation-sync', {
-        tick: function () {
-          // カメラの回転を取得（モデルの操作には利用していません）
-          const cameraRotation = this.el.sceneEl.camera.el.getAttribute('rotation');
-        }
-      });
-
-      // ポリゴンオフセット用コンポーネント
-      AFRAME.registerComponent('polygon-offset', {
-        schema: {
-          factor: { type: 'number', default: 1 },
-          units: { type: 'number', default: 1 },
-        },
-        init: function () {
-          const mesh = this.el.getObject3D('mesh');
-          if (mesh) {
-            mesh.traverse(node => {
-              if (node.isMesh) {
-                node.material.polygonOffset = true;
-                node.material.polygonOffsetFactor = this.data.factor;
-                node.material.polygonOffsetUnits = this.data.units;
-              }
-            });
-          }
-        }
-      });
-    </script>
-</head>
-<body style="margin: 0; overflow: hidden;">
+    <title>AR.js Location-Based Example</title>
+  </head>
+  <body style="margin: 0; overflow: hidden;">
     <a-scene 
-      antialias="true" 
-      renderer="logarithmicDepthBuffer: true; alpha: true; precision: highp;" 
       vr-mode-ui="enabled: false" 
       embedded 
       arjs="sourceType: webcam; debugUIEnabled: false;">
-      
-      <!-- カメラの設定 -->
-      <a-camera gps-camera rotation-sync></a-camera>
 
-      <!-- 環境光 -->
-      <a-light type="ambient" color="#ffffff" intensity="0.5"></a-light>
+      <!-- 地面 -->
+      <a-entity 
+        gps-entity-place="latitude: 0; longitude: 0;" 
+        geometry="primitive: plane; height: 100; width: 100;" 
+        rotation="-90 0 0" 
+        material="color: #999999; opacity: 0.5;">
+      </a-entity>
 
-      <!-- ディレクショナルライト -->
-      <a-light 
-        type="directional" 
-        position="1 2 0.5" 
-        intensity="0.8" 
-        target="#clock-model" 
-        castShadow="true">
-      </a-light>
+      <!-- こったまーや -->
+      <a-entity
+        gps-entity-place="latitude: 37.958433731663035; longitude: 139.3425837539543;"
+        gltf-model="https://raw.githubusercontent.com/ei-pc10/modelmodel/main/kottamaya.glb"
+        scale="4 4 4"
+        look-at="[camera]">
+      </a-entity>
 
+      <!-- 新発田城 -->
+      <a-entity
+        gps-entity-place="latitude: 37.9547518000514; longitude: 139.32604358487515;"
+        gltf-model="https://raw.githubusercontent.com/ei-pc10/20241101_model/main/%E6%96%B0%E7%99%BA%E7%94%B0%E5%9F%8E.glb"
+        scale="2 2 2"
+        look-at="[camera]">
+      </a-entity>
+
+      <!-- 煉瓦屋 -->
+      <a-entity
+        gps-entity-place="latitude: 37.94893620484652; longitude: 139.32432147573522;"
+        gltf-model="https://raw.githubusercontent.com/ei-pc10/modelmodel/main/%E7%85%89%E7%93%A6%E5%B1%8B.glb"
+        scale="5 5 5"
+        look-at="[camera]">
+      </a-entity>
+
+      <!-- ちびキャラ -->
+      <a-entity
+        gps-entity-place="latitude: 37.95587965373841; longitude: 139.33839569659503;"
+        gltf-model="https://raw.githubusercontent.com/ei-pc10/20241101_model/main/%E3%83%81%E3%83%93%E3%82%AD%E3%83%A3%E3%83%A9%E7%BE%8A%E7%BE%B9v%E3%83%9D%E3%83%8B%E3%83%86.31%E5%BE%85%E6%A9%9F.glb"
+        scale="1.5 1.5 1.5"
+        look-at="[camera]"
+        animation-mixer>
+      </a-entity>
+
+      <!-- 新発田市章 -->
+      <a-entity
+        gps-entity-place="latitude: 37.94818946282788; longitude: 139.3274179439581;"
+        gltf-model="https://raw.githubusercontent.com/ei-pc10/20241101_model/main/shibata_logo.glb"
+        scale="3 3 3"
+        look-at="[camera]">
+      </a-entity>
     </a-scene>
-</body>
+  </body>
 </html>
