@@ -12,7 +12,7 @@
      id="scene"
      vr-mode-ui="enabled: false"
      embedded
-     arjs="sourceType: webcam;debugUIEnabled: false;trackingMethod: best;"
+     arjs="sourceType: webcam;debugUIEnabled: false;trackingMethod: best;location: true;"
      renderer="logarithmicDepthBuffer: true"
      light="defaultLightsEnabled: false">
 
@@ -21,8 +21,7 @@
         gps-entity-place="latitude: 37.958433731663035; longitude: 139.3425837539543;"
         gltf-model="https://raw.githubusercontent.com/ei-pc10/modelmodel/main/kottamaya.glb"
         scale="4 4 4"
-        look-at="[gps-camera]"
-        position="0 0 0">
+        look-at="[gps-camera]">
       </a-entity>
 
       <!-- 新発田城 -->
@@ -30,8 +29,7 @@
         gps-entity-place="latitude: 37.9547518000514; longitude: 139.32604358487515;"
         gltf-model="https://raw.githubusercontent.com/ei-pc10/20241101_model/main/%E6%96%B0%E7%99%BA%E7%94%B0%E5%9F%8E.glb"
         scale="2 2 2"
-        look-at="[gps-camera]"
-        position="0 0 0">
+        look-at="[gps-camera]">
       </a-entity>
 
       <!-- 煉瓦屋 -->
@@ -39,8 +37,7 @@
         gps-entity-place="latitude: 37.94893620484652; longitude: 139.32432147573522;"
         gltf-model="https://raw.githubusercontent.com/ei-pc10/modelmodel/main/%E7%85%89%E7%93%A6%E5%B1%8B.glb"
         scale="5 5 5"
-        look-at="[gps-camera]"
-        position="0 0 0">
+        look-at="[gps-camera]">
       </a-entity>
 
       <!-- ちびキャラ -->
@@ -49,7 +46,6 @@
         gltf-model="https://raw.githubusercontent.com/ei-pc10/20241101_model/main/%E3%83%81%E3%83%93%E3%82%AD%E3%83%A3%E3%83%A9%E7%BE%8A%E7%BE%B9v%E3%83%9D%E3%83%8B%E3%83%86.31%E5%BE%85%E6%A9%9F.glb"
         scale="1.5 1.5 1.5"
         look-at="[gps-camera]"
-        position="0 0 0"
         animation-mixer>
       </a-entity>
 
@@ -58,15 +54,14 @@
         gps-entity-place="latitude: 37.94818946282788; longitude: 139.3274179439581;"
         gltf-model="https://raw.githubusercontent.com/ei-pc10/20241101_model/main/shibata_logo.glb"
         scale="3 3 3"
-        look-at="[gps-camera]"
-        position="0 0 0">
+        look-at="[gps-camera]">
       </a-entity>
 
       <!-- GPSカメラ -->
-      <a-entity gps-camera rotation-reader position="0 5 5"></a-entity>
+      <a-entity gps-camera position="0 1.6 0" rotation-reader></a-entity>
 
-      <a-entity light="color: #BBB; type: ambient; intensity: 1.5" data-aframe-default-light="" aframe-injected=""></a-entity>
-      <a-entity light="intensity: 1.2; castShadow: true" position="-0.5 1 1" data-aframe-default-light="" aframe-injected=""></a-entity>   
+      <a-entity light="color: #BBB; type: ambient; intensity: 1.5"></a-entity>
+      <a-entity light="intensity: 1.2; castShadow: true" position="-0.5 1 1"></a-entity>   
     </a-scene>
   </body>
 </html>
