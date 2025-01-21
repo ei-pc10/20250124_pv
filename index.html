@@ -1,27 +1,89 @@
-<!DOCTYPE html>
+<!DOCTYPE html> <!-- 煉瓦屋 コーヒー 細川君のキャラボブ ポニテ -->
 <html>
-  <head>
-    <title>Location-Based AR</title>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>AR.js Location-Based 3D Models</title>
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js"></script>
-  </head>
-  <body style="margin: 0; overflow: hidden;">
-    <a-scene
-      embedded
-      arjs="sourceType: webcam; debugUIEnabled: false;"
-    >
-      <!-- カメラ -->
-      <a-camera gps-camera rotation-reader></a-camera>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
+    <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
+    <script>
+      // rotation-sync コンポーネントを定義（モデルの回転を変更しない）
+      AFRAME.registerComponent('rotation-sync', {
+        tick: function () {
+          // ここではカメラの回転情報を取得しますが、モデルには影響を与えません。
+          const cameraRotation = this.el.sceneEl.camera.el.getAttribute('rotation');
+        }
+      });
 
-      <!-- 3Dモデルを表示する場所 -->
-      <a-entity
-        gps-entity-place="latitude: 35.6895; longitude: 139.6917;"
-        gltf-model="https://cdn.jsdelivr.net/gh/KhronosGroup/glTF-Sample-Models/2.0/Duck/glTF/Duck.gltf"
-        scale="10 10 10"
-        look-at="[gps-camera]"
-      ></a-entity>
+      // ポリゴンオフセット用コンポーネントを定義
+      AFRAME.registerComponent('polygon-offset', {
+        schema: {
+          factor: { type: 'number', default: 1 }, // オフセット係数
+          units: { type: 'number', default: 1 },  // オフセット単位
+        },
+        init: function () {
+          const mesh = this.el.getObject3D('mesh');
+          if (mesh) {
+            mesh.traverse(node => {
+              if (node.isMesh) {
+                node.material.polygonOffset = true;
+                node.material.polygonOffsetFactor = this.data.factor;
+                node.material.polygonOffsetUnits = this.data.units;
+              }
+            });
+          }
+        }
+      });
+    </script>
+</head>
+<body style="margin: 0; overflow: hidden;">
+    <a-scene 
+      antialias="true" 
+      renderer="logarithmicDepthBuffer: true; alpha: true; precision: highp;" 
+      vr-mode-ui="enabled: false" 
+      embedded 
+      arjs="sourceType: webcam; debugUIEnabled: false;">
+      
+      <!-- カメラの設定 -->
+      <a-camera gps-camera rotation-sync></a-camera>
+
+      <!-- 環境光 -->
+      <a-light type="ambient" color="#ffffff" intensity="0.5"></a-light>
+
+      <!-- ディレクショナルライト -->
+      <a-light 
+        type="directional" 
+        position="1 2 0.5" 
+        intensity="0.8" 
+        target="#model" 
+        castShadow="true"></a-light>
+
+      <!-- 3Dモデルにポリゴンオフセットを適用 -->
+      <!-- 細川君のちびキャラ -->
+      <a-entity 
+        id="model1"
+        gps-entity-place="latitude: 37.95623964531757; longitude: 139.3371717973987" 
+        gltf-model="https://raw.githubusercontent.com/ei-pc10/modelmodel/main/%E3%83%81%E3%83%93%E3%82%AD%E3%83%A3%E3%83%A9%E7%BE%8A%E7%BE%B9v%E3%83%9D%E3%83%8B%E3%83%86.31%E3%82%88%E3%82%8D%E3%81%93%E3%81%B3%E3%83%9C%E3%83%BC%E3%83%B3.glb" 
+        scale="8 8 8" 
+        rotation="0 0 0"
+        look-at="[camera]"
+        polygon-offset="factor: 1; units: 1">
+      </a-entity>
+      
+      <!-- こったまーや -->
+      <a-entity 
+        id="model2"
+        gps-entity-place="latitude: 37.958433731663035; longitude: 139.3425837539543" 
+        gltf-model="https://raw.githubusercontent.com/ei-pc10/modelmodel/main/kottamaya.glb" 
+        scale="2 2 2" 
+        rotation="0 0 0"
+        look-at="[camera]"
+        polygon-offset="factor: 1; units: 1">
+      </a-entity>
+      
     </a-scene>
-  </body>
+</body>
 </html>
