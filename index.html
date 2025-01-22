@@ -1,4 +1,14 @@
 <!DOCTYPE html> <!-- 煉瓦屋 コーヒー 細川君のキャラボブ ポニテ -->
+<!-- 
+こったまーや:https://raw.githubusercontent.com/ei-pc10/show_models/main/kottamaya.glb 37.9584489943575, 139.34264597477087
+煉瓦屋:https://raw.githubusercontent.com/ei-pc10/show_models/main/renga.glb 37.94892959990337, 139.32432669317228
+新発田市章:https://raw.githubusercontent.com/ei-pc10/show_models/main/shibata_logo.glb 37.94822800327645, 139.327420987668
+新発田城:https://raw.githubusercontent.com/ei-pc10/show_models/main/shibatajyo.glb 37.95474094660365, 139.32598240586483
+諏訪ノ森時計:https://raw.githubusercontent.com/ei-pc10/show_models/main/suwanomori_clock.glb 37.944355706564394, 139.33082423638757
+新発田市役所:https://raw.githubusercontent.com/ei-pc10/show_models/main/siyakusyo1.glb 37.94822800327645, 139.327420987668
+細川君のモデル:https://raw.githubusercontent.com/ei-pc10/show_models/main/hosokawa_bob.glb 37.95586802839388, 139.33838324548068
+
+-->
 <html>
 <head>
     <meta charset="utf-8" />
@@ -64,9 +74,9 @@
       <!-- 3Dモデルにポリゴンオフセットを適用 -->
       <!-- 細川君のちびキャラ -->
       <a-entity 
-        id="model1"
+        id="hosokawa_bob"
         gps-entity-place="latitude: 37.95623964531757; longitude: 139.3371717973987" 
-        gltf-model="https://raw.githubusercontent.com/ei-pc10/modelmodel/main/%E3%83%81%E3%83%93%E3%82%AD%E3%83%A3%E3%83%A9%E7%BE%8A%E7%BE%B9v%E3%83%9D%E3%83%8B%E3%83%86.31%E3%82%88%E3%82%8D%E3%81%93%E3%81%B3%E3%83%9C%E3%83%BC%E3%83%B3.glb" 
+        gltf-model="https://raw.githubusercontent.com/ei-pc10/show_models/main/hosokawa_bob.glb" 
         scale="8 8 8" 
         look-at="[camera]"
         polygon-offset="factor: 1; units: 1">
@@ -74,8 +84,8 @@
         
       <!-- こったまーや -->
       <a-entity 
-        id="model2"
-        gps-entity-place="latitude: 37.958433731663035; longitude: 139.3425837539543" 
+        id="kottama-ya"
+        gps-entity-place="latitude: 37.9584489943575; longitude: 139.34264597477087" 
         gltf-model="https://raw.githubusercontent.com/ei-pc10/show_models/main/kottamaya.glb" 
         scale="8 8 8"
         look-at="[camera]"
@@ -84,36 +94,55 @@
 
       <!-- 新発田城 -->
       <a-entity 
-        id="model3"
-        gps-entity-place="latitude: 37.9547518000514; longitude: 139.32604358487515" 
-        gltf-model="https://raw.githubusercontent.com/ei-pc10/20241101_model/main/%E6%96%B0%E7%99%BA%E7%94%B0%E5%9F%8E.glb" 
-        scale="20 20 20"
+        id="shibatajyo"
+        gps-entity-place="latitude: 37.95474094660365; longitude: 139.32598240586483" 
+        gltf-model="https://raw.githubusercontent.com/ei-pc10/show_models/main/shibatajyo.glb" 
+        scale="10 10 10"
         look-at="[camera]"
         polygon-offset="factor: 1; units: 1">
       </a-entity>
 
-    <!-- 煉瓦屋 -->
-    <a-entity 
-        id="model4"
-        gps-entity-place="latitude: 37.94893620484652; longitude: 139.32432147573522" 
-        gltf-model="https://raw.githubusercontent.com/ei-pc10/modelmodel/main/%E7%85%89%E7%93%A6%E5%B1%8B.glb" 
-        scale="50 50 50"
-        position="0 0 0"
+     <!-- 煉瓦屋 -->
+      <a-entity 
+        id="renga"
+        gps-entity-place="latitude: 37.94892959990337; longitude: 139.32432669317228" 
+        gltf-model="https://raw.githubusercontent.com/ei-pc10/show_models/main/renga.glb" 
+        scale="8 8 8" 
         look-at="[camera]"
         polygon-offset="factor: 1; units: 1">
-    </a-entity>
-    
-    <!-- 新発田市章 -->
-    <a-entity 
-    id="model5"
-    gps-entity-place="latitude: 37.94893620484652; longitude: 139.32432147573522"
-    gltf-model="https://raw.githubusercontent.com/ei-pc10/20241101_model/main/shibata_logo.glb" 
-    scale="50 50 50"
-    position="0 0 0"
-    look-at="[camera]"
-    polygon-offset="factor: 1; units: 1">
-    </a-entity>
+      </a-entity>
 
+      <!-- 新発田市章 -->
+      <a-entity 
+        id="shibata_logo"
+        gps-entity-place="latitude: 37.94822800327645; longitude: 139.327420987668" 
+        gltf-model="https://raw.githubusercontent.com/ei-pc10/show_models/main/shibata_logo.glb" 
+        scale="5 5 5" 
+        look-at="[camera]"
+        polygon-offset="factor: 1; units: 1">
+      </a-entity>
+
+     <!-- 諏訪ノ森時計 -->
+      <a-entity 
+        id="suwanomori_clock"
+        gps-entity-place="latitude: 37.944355706564394; longitude: 139.33082423638757" 
+        gltf-model="https://raw.githubusercontent.com/ei-pc10/show_models/main/suwanomori_clock.glb" 
+        scale="4 4 4" 
+        look-at="[camera]"
+        polygon-offset="factor: 1; units: 1">
+      </a-entity>
+
+
+      <!-- 新発田市役所 -->
+      <a-entity 
+        id="shibata_siyakusyo"
+        gps-entity-place="latitude: 37.94822800327645; longitude: 139.327420987668" 
+        gltf-model="https://raw.githubusercontent.com/ei-pc10/show_models/main/siyakusyo1.glb" 
+        scale="5 5 5" 
+        look-at="[camera]"
+        polygon-offset="factor: 1; units: 1">
+      </a-entity>
+        
     </a-scene>
 </body>
 </html>
