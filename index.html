@@ -70,7 +70,7 @@
       <a-camera gps-camera rotation-sync></a-camera>
     -->
 
-       <a-camera gps-new-camera="minDistance:5; maxDistance:5000"></a-camera>  <!-- AR.jsドキュメントお薦め --> 
+       <a-camera gps-camera="minDistance:5; maxDistance:5000"></a-camera>  <!-- AR.jsドキュメントお薦め --> 
         
       <!-- 環境光 -->
       <a-light type="ambient" color="#ffffff" intensity="0.5"></a-light>
@@ -87,7 +87,7 @@
       <!-- 細川君のちびキャラ -->
       <a-entity 
         id="hosokawa_bob"
-        gps-new-entity-place="latitude: 37.95623964531757; longitude: 139.3371717973987" 
+        gps-entity-place="latitude: 37.95623964531757; longitude: 139.3371717973987" 
         gltf-model="https://raw.githubusercontent.com/ei-pc10/show_models/main/hosokawa_bob.glb" 
         scale="8 8 8" 
         look-at="[camera]"
@@ -97,7 +97,7 @@
       <!-- こったまーや -->
       <a-entity 
         id="kottama-ya"
-        gps-new-entity-place="latitude: 37.9584489943575; longitude: 139.34264597477087" 
+        gps-entity-place="latitude: 37.9584489943575; longitude: 139.34264597477087" 
         gltf-model="https://raw.githubusercontent.com/ei-pc10/show_models/main/kottamaya.glb" 
         scale="8 8 8"
         look-at="[camera]"
@@ -107,7 +107,7 @@
       <!-- 新発田城 -->
       <a-entity 
         id="shibatajyo"
-        gps-new-entity-place="latitude: 37.95474094660365; longitude: 139.32598240586483" 
+        gps-entity-place="latitude: 37.95474094660365; longitude: 139.32598240586483" 
         gltf-model="https://raw.githubusercontent.com/ei-pc10/show_models/main/shibatajyo.glb" 
         scale="10 10 10"
         look-at="[camera]"
