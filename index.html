@@ -19,13 +19,13 @@
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
 
-    
+<!--    
     <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
-    
-<!--
+-->    
+
     <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar.js'></script>
     <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/three.js/build/ar-threex-location-only.js'></script>
--->
+
     
     <script>
       // rotation-sync コンポーネントを定義（モデルの回転を変更しない）
@@ -60,7 +60,7 @@
 <body style="margin: 0; overflow: hidden;">
     <a-scene 
       antialias="true" 
-      renderer="logarithmicDepthBuffer: true; alpha: true; precision: highp;" 
+      renderer="logarithmicDepthBuffer: true; alpha: true; precision: high;" 
       vr-mode-ui="enabled: false" 
       embedded 
       arjs="sourceType: webcam; debugUIEnabled: false;">
@@ -87,7 +87,7 @@
       <!-- 細川君のちびキャラ -->
       <a-entity 
         id="hosokawa_bob"
-        gps-entity-place="latitude: 37.95623964531757; longitude: 139.3371717973987" 
+        gps-new-entity-place="latitude: 37.95623964531757; longitude: 139.3371717973987" 
         gltf-model="https://raw.githubusercontent.com/ei-pc10/show_models/main/hosokawa_bob.glb" 
         scale="8 8 8" 
         look-at="[camera]"
@@ -97,9 +97,9 @@
       <!-- こったまーや -->
       <a-entity 
         id="kottama-ya"
-        gps-entity-place="latitude: 37.9584489943575; longitude: 139.34264597477087" 
+        gps-new-entity-place="latitude: 37.9584489943575; longitude: 139.34264597477087" 
         gltf-model="https://raw.githubusercontent.com/ei-pc10/show_models/main/kottamaya.glb" 
-        scale="8 8 8"
+        scale="20 20 20"
         look-at="[camera]"
         polygon-offset="factor: 1; units: 1">
       </a-entity>
